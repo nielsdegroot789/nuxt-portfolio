@@ -1,41 +1,40 @@
-
-
 function interpretBrainFuck(program, inputArray, arrayLength) {
-    checkForBrackets(program)
+  let mainArray = initArray(arrayLength);
 
-    arr = []
-    for(i = 0; i < program.length; i++)
-    switch (program[i]) {
-        case '+': program[i]++;
+  let locationIndex = 0;
+  let index = 0;
+    while(locationIndex < program.length) {
+    switch (program[locationIndex]) {
+      case "+":
+        index++;
+        locationIndex++;
+        console.log(locationIndex);
+        console.log(index);
         break;
-        
-        case '-':
+
+      case "-":
         break;
-        
-        case '<':
+
+      case "<":
         break;
-        
-        case '>':
+
+      case ">":
         break;
-        
-        case '.': let res = String.fromCharCode(program[i]);
-        return arr.push(res);
-        
+
+      case ".":
         break;
-        case ',':
+      case ",":
         break;
-        
-        case '[':
+
+      case "[":
         break;
-        
-        case ']':
+
+      case "]":
         break;
     }
-    return res;
+  }
 }
 
-function checkForBrackets(program) {
-if (!program.indexOf(']') === -1 && !program.indexOf('[') === -1) {
-return alert("no brackets detected");
-}
+function initArray(length) {
+  return Array(length).fill(0);
 }
