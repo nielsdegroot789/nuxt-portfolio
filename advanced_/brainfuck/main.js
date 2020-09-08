@@ -3,25 +3,35 @@ function interpretBrainFuck(program, inputArray, arrayLength) {
 
   let locationIndex = 0;
   let index = 0;
-    while(locationIndex < program.length) {
+  let resultArray = 0;
+
+  while (locationIndex < program.length) {
     switch (program[locationIndex]) {
       case "+":
-        index++;
+        mainArray[index]++;
         locationIndex++;
         console.log(locationIndex);
-        console.log(index);
+        console.log(program.length);
         break;
 
       case "-":
+        mainArray[index]--;
+        locationIndex++;
         break;
 
       case "<":
+        index--;
+        locationIndex++;
         break;
 
       case ">":
+        index++;
+        locationIndex++;
         break;
 
       case ".":
+        resultArray += String.fromCharCode(mainArray[index]);
+        locationIndex++;
         break;
       case ",":
         break;
@@ -33,6 +43,7 @@ function interpretBrainFuck(program, inputArray, arrayLength) {
         break;
     }
   }
+  return resultArray;
 }
 
 function initArray(length) {
