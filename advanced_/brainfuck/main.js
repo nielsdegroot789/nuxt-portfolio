@@ -1,11 +1,11 @@
 function interpretBrainFuck(program, inputArray, arrayLength) {
   let mainArray = initArray(arrayLength);
-
+  let filteredArray = filterArray(program);
   let locationIndex = 0;
   let index = 0;
   let resultArray = 0;
 
-  while (locationIndex < program.length) {
+  while (locationIndex < filteredArray.length) {
     switch (program[locationIndex]) {
       case "+":
         mainArray[index]++;
@@ -34,18 +34,26 @@ function interpretBrainFuck(program, inputArray, arrayLength) {
         locationIndex++;
         break;
       case ",":
+        locationIndex++;
         break;
 
       case "[":
+        locationIndex++;
         break;
 
       case "]":
+        locationIndex++;
         break;
     }
   }
+  console.log(resultArray);
   return resultArray;
 }
 
 function initArray(length) {
   return Array(length).fill(0);
+}
+
+function filterArray(array) {
+  return array.replace(/[^><+-.,\[\]]/g, "").split("");
 }
