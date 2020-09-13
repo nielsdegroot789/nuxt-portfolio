@@ -1,0 +1,56 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.counter-cell {
+border: 1px solid gray;
+padding: 10px ;
+}
+
+#game-counter {
+    display: flex;
+    margin-left: 40%;
+    margin-right: 50%;
+}
+
+input[type=textarea] {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 200px;
+    width: 50%;
+}
+input[type=text] {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100px;
+    width: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+.focus {
+    border: 2px solid red;
+}
+
+#output {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 60px;
+    background-color:rgb(177, 185, 185);
+}
+
+h2 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+input[type=button] {
+    margin-left: 25%;
+    width: 50%;
+    height: 100px;
+}

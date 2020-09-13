@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
     <title>brain fok</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="assertions"></div>
+    <div id="game-counter">
+      <div class="counter-cell" id="0">0</div>
+      <div class="counter-cell" id="1">0</div>
+      <div class="counter-cell" id="2">0</div>
+      <div class="counter-cell" id="3">0</div>
+      <div class="counter-cell" id="4">0</div>
+      <div class="counter-cell" id="5">0</div>
+      <div class="counter-cell" id="6">0</div>
+      <div class="counter-cell" id="7">0</div>
+      <div class="counter-cell" id="8">0</div>
+      <div class="counter-cell" id="9">0</div>
+    </div>
+
+    <div id="input-container">
+      <label for="arrayLength">array length</label
+      ><input type="text" name="arrayLength" id="arrayLength" />
+      <label for="">input values</label>
+      <input type="text" value="" id="extra-values" />
+      <input type="textarea" id="input" />
+    </div>
+
+    <h2>output</h2>
+    <p id="output"></p>
+    <input type="button" id="start-button" value="start" />
+    <input type="button" id="stop-button" value="stop" />
     <script src="./main.js"></script>
-    <script src="https://git.fullstacksyntra.be/koeeckho/html-css-js-advanced/raw/branch/master/5-brainfuck/assert.js"</script></script>
-</body>
+  </body>
 </html>
