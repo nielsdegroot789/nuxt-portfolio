@@ -12,7 +12,6 @@ function interpretBrainFuck() {
   let filteredArray = filterArray(input);
   let locationIndex = 0;
   let index = 0;
-  let resultArray = "";
 
   const bracketPairs = genBracketPairs(filteredArray);
 
@@ -35,8 +34,10 @@ function interpretBrainFuck() {
         currentCell.innerHTML--;
         break;
       case ".":
+        
         let res = String.fromCharCode(mainArray[index]);
-        resultArray += res;
+        let output = document.getElementById("output");
+        output.innerHTML += res;
         locationIndex++;
         break;
       case "<":
@@ -45,13 +46,17 @@ function interpretBrainFuck() {
         locationIndex++;
         break;
       case ">":
-        if (index === mainArray[index] - 1) return "POINTER OUT OF BOUNDS"; //probleem met index
+        if (index === mainArray[index] -1) return "POINTER OUT OF BOUNDS"; //probleem met index
         index++;
         console.log(index);
         locationIndex++;
         break;
       case "]":
-        locationIndex = findBrotherIndex(bracketPairs, locationIndex);
+        if(mainArray[index] === 0) {
+          locationIndex++;
+        } else {
+          locationIndex = findBrotherIndex(bracketPairs, locationIndex);
+        }
         break;
       case "[":
         if (mainArray[index] === 0) {
@@ -66,7 +71,6 @@ function interpretBrainFuck() {
         break;
     }
   }
-  document.getElementById("output").innerHTML = resultArray;
 }
 
 function initArray(length) {
