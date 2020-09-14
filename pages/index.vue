@@ -1,32 +1,25 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">6-portfolio</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <frameworkFilter />
   </div>
 </template>
 
 <script>
-export default {}
+import frameworkFilter from '../components/frameworkFilter';
+
+export default {
+  components: {
+    frameworkFilter,
+  },
+  computed: {
+    people() {
+      return this.$store.state.people;
+    },
+  },
+  created() {
+    this.$store.dispatch('loadPeople');
+  },
+};
 </script>
 
 <style>
