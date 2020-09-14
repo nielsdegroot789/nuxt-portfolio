@@ -5,10 +5,12 @@ const stopButton = document.getElementById("stop-button");
 
 function interpretBrainFuck() {
   document.getElementById("start-button").classList.add("hidden");
+  debugger;
   let arrayLength = document.getElementById("arrayLength").value;
   let input = document.getElementById("input").value;
   let inputArray = document.getElementById("extra-values").value;
   let mainArray = initArray(arrayLength);
+  console.log(arrayLength);
   let filteredArray = filterArray(input);
   let locationIndex = 0;
   let index = 0;
@@ -48,7 +50,6 @@ function interpretBrainFuck() {
       case ">":
         if (index === mainArray[index] -1) return "POINTER OUT OF BOUNDS"; //probleem met index
         index++;
-        console.log(index);
         locationIndex++;
         break;
       case "]":
