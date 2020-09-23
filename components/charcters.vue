@@ -4,7 +4,7 @@
       <search class="search" />
       <spinner v-if="loading" class="spinner" />
       <div v-else class="results-container">
-        <div v-for="(item, index) in this.people" :key="index" class="results">
+        <div v-for="(item, index) in people" :key="index" class="results">
           {{ item.name }}
           {{ item.modified }}
         </div>

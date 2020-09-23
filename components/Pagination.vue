@@ -1,25 +1,34 @@
 <template>
   <div>
     <h1>Pagination</h1>
-    <nuxt-link v-if="!first == false" :to="'/characters/' + first"
+    <nuxt-link
+      v-if="!first == false"
+      :to="{ path: '/characters/' + first, query: { name: searchTerm } }"
       >First</nuxt-link
     >
     <nuxt-link
       v-if="!previous == false"
-      :to="{ path: '/characters/' + previous }"
+      :to="{ path: '/characters/' + previous, query: { name: searchTerm } }"
       >previous</nuxt-link
     >
     <nuxt-link
-      v-for="page in this.pageButtons"
+      v-for="page in pageButtons"
       :key="page"
-      :to="'/characters/' + page"
+      :to="{
+        path: '/characters/' + page,
+        query: { name: searchTerm },
+      }"
     >
       {{ page }}
     </nuxt-link>
-    <nuxt-link v-if="!next == false" :to="'/characters/' + next"
+    <nuxt-link
+      v-if="!next == false"
+      :to="{ path: '/characters/' + next, query: { name: searchTerm } }"
       >next</nuxt-link
     >
-    <nuxt-link v-if="!last == false" :to="'/characters/' + last"
+    <nuxt-link
+      v-if="!last == false"
+      :to="{ path: '/characters/' + last, query: { name: searchTerm } }"
       >Last</nuxt-link
     >
   </div>
@@ -58,6 +67,9 @@ export default {
         return false;
       }
       return this.totalPages;
+    },
+    searchTerm() {
+      return this.$store.getters.searchTerm;
     },
 
     pageButtons() {

@@ -6,6 +6,7 @@ export const state = () => ({
   loading: false,
   totalPages: 0,
   limitt: 20,
+  searchTerm: '',
 });
 
 export const actions = {
@@ -26,6 +27,7 @@ export const actions = {
         url: 'https://gateway.marvel.com/v1/public/characters',
         params,
       });
+      commit('saveSearchTerm', name);
       commit('swapiPage', characters.data);
       commit('loadingChange', false);
       commit('totalItems', characters.data.data.total);
@@ -36,12 +38,15 @@ export const actions = {
 };
 
 export const mutations = {
+  saveSearchTerm(state, search) {
+    state.searchTerm = search;
+  },
+
   FilterPeople(state, people) {
     state.filterResults = people.data.results;
   },
 
   swapiPage(state, results) {
-    console.log(results.data.results);
     state.people = results.data.results;
   },
 
@@ -57,4 +62,5 @@ export const getters = {
   people: (state) => state.people,
   loading: (state) => state.loading,
   totalPages: (state) => Math.ceil(state.totalPages / state.limitt),
+  searchTerm: (state) => state.searchTerm,
 };

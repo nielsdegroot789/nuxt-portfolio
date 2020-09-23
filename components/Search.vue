@@ -34,17 +34,15 @@ export default {
           pageNr: this.pageNr,
           name: this.searchTerm,
         });
-        console.log(route);
       },
     },
   },
   methods: {
     search() {
-      console.log('ba');
       clearTimeout(this.filterTimeout);
       this.filterTimeout = setTimeout(() => {
         this.$router.push({
-          path: '',
+          path: '/characters/1',
           query: { name: this.searchTerm },
         });
       }, 1000);
