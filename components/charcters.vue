@@ -18,6 +18,10 @@
 import spinner from '../components/SpinnerComponent';
 import Pagination from '../components/Pagination';
 export default {
+  components: {
+    Pagination,
+    spinner,
+  },
   computed: {
     pageNr() {
       return parseInt(this.$route.params.page);
@@ -34,10 +38,6 @@ export default {
     loading() {
       return this.$store.getters.loading;
     },
-  },
-  components: {
-    Pagination,
-    spinner,
   },
 };
 </script>

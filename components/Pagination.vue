@@ -73,7 +73,10 @@ export default {
     },
 
     pageButtons() {
-      const start = Math.min(this.totalPages - 4, Math.max(1, this.pageNr - 2));
+      let start = Math.min(this.totalPages - 4, Math.max(1, this.pageNr - 2));
+      if (start < 0) {
+        start = 0;
+      }
       const array = [];
       for (let i = start; i <= start + 5; i++) {
         array.push(i + 1);
