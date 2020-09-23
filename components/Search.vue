@@ -7,6 +7,24 @@
       placeholder="search"
       @keyup="search"
     />
+    <div>
+      <input
+        v-model="searchComic"
+        class="autoComplete"
+        type="input"
+        placeholder="autocomplete"
+        @keyup="suggestComic"
+      />
+      <ul class="autocomplete-list">
+        <li
+          v-for="(comic, index) in comics"
+          :key="index"
+          class="autocomplete-items"
+        >
+          {{ comic.title }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -18,11 +36,15 @@ export default {
       searchTerm: '',
       filterTimeout: 0,
       timeoutId: null,
+      searchComic: '',
     };
   },
   computed: {
     pageNr() {
       return parseInt(this.$route.params.page);
+    },
+    comics() {
+      return this.$store.getters.comics;
     },
   },
   watch: {
@@ -47,8 +69,24 @@ export default {
         });
       }, 1000);
     },
+    suggestComic() {
+      this.$store.dispatch('getComics', this.searchComic);
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.autocomplete-items {
+  border: 1px solid #d4d4d4;
+  list-style: none;
+  text-align: left;
+  padding: 4px 2px;
+  cursor: pointer;
+}
+
+.autocomplete-items:hover {
+  background-color: #4aae60;
+  color: white;
+}
+</style>

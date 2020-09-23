@@ -7,6 +7,7 @@ export const state = () => ({
   totalPages: 0,
   limitt: 20,
   searchTerm: '',
+  comics: '',
 });
 
 export const actions = {
@@ -35,9 +36,30 @@ export const actions = {
       console.log(error);
     }
   },
+
+  async getComics({ commit }, title) {
+    const params = {
+      apikey: 'a61f920be89f461f8fa05c8bd75e5327',
+      limit: 10,
+    };
+    params.titleStartsWith = title;
+    try {
+      const comics = await this.$axios({
+        method: 'GET',
+        url: 'https://gateway.marvel.com/v1/public/comics',
+        params,
+      });
+      commit('filteredComics', comics.data.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 export const mutations = {
+  filteredComics(state, comics) {
+    state.comics = comics;
+  },
   saveSearchTerm(state, search) {
     state.searchTerm = search;
   },
@@ -63,4 +85,5 @@ export const getters = {
   loading: (state) => state.loading,
   totalPages: (state) => Math.ceil(state.totalPages / state.limitt),
   searchTerm: (state) => state.searchTerm,
+  comics: (state) => state.comics,
 };
