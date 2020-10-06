@@ -173,6 +173,11 @@ export default {
     display: none;
   }
 }
+
+.responsive-links {
+  display: block;
+  text-align: left;
+}
 .nav-button {
   background-color: transparent;
   border-radius: 0;
