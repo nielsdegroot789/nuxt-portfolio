@@ -8,6 +8,7 @@ export const state = () => ({
   limitt: 20,
   searchTerm: '',
   comics: '',
+  batchComic: [],
 });
 
 export const actions = {
@@ -54,9 +55,16 @@ export const actions = {
       console.log(error);
     }
   },
+  addComicBatch({ commit }, payload) {
+    console.log(payload);
+    commit('saveComic', payload);
+  },
 };
 
 export const mutations = {
+  saveComic(state, payload) {
+    state.batchComic.push({ ...payload });
+  },
   filteredComics(state, comics) {
     state.comics = comics;
   },

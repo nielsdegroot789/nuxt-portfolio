@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pagination-container">
     <h1>Pagination</h1>
     <nuxt-link
       v-if="!first == false"
@@ -87,4 +87,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.pagination-container {
+  height: 500px;
+}
+</style>

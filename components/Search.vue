@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-container">
     <input
       id="searchBar"
       v-model="searchTerm"
@@ -7,44 +7,27 @@
       placeholder="search"
       @keyup="search"
     />
-    <div>
-      <input
-        v-model="searchComic"
-        class="autoComplete"
-        type="input"
-        placeholder="autocomplete"
-        @keyup="suggestComic"
-      />
-      <ul class="autocomplete-list">
-        <li
-          v-for="(comic, index) in comics"
-          :key="index"
-          class="autocomplete-items"
-        >
-          {{ comic.title }}
-        </li>
-      </ul>
-    </div>
+    <MultiSelectContainer />
   </div>
 </template>
 
 <script>
+import MultiSelectContainer from '../components/MultiSelectContainer';
 export default {
   name: 'Search',
+  components: {
+    MultiSelectContainer,
+  },
   data() {
     return {
       searchTerm: '',
       filterTimeout: 0,
       timeoutId: null,
-      searchComic: '',
     };
   },
   computed: {
     pageNr() {
       return parseInt(this.$route.params.page);
-    },
-    comics() {
-      return this.$store.getters.comics;
     },
   },
   watch: {
@@ -69,9 +52,6 @@ export default {
         });
       }, 1000);
     },
-    suggestComic() {
-      this.$store.dispatch('getComics', this.searchComic);
-    },
   },
 };
 </script>
@@ -88,5 +68,8 @@ export default {
 .autocomplete-items:hover {
   background-color: #4aae60;
   color: white;
+}
+.search-container {
+  padding-top: 5rem;
 }
 </style>

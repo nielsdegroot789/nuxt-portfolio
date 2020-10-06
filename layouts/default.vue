@@ -1,10 +1,16 @@
 <template>
   <div>
+    <navbar />
     <Nuxt />
   </div>
 </template>
 
-<script></script>
+<script>
+import navbar from '../components/header';
+export default {
+  components: { navbar },
+};
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
